@@ -11,7 +11,7 @@ Resources:
       FunctionName: micronaut-person-api
       Handler: micronaut.person.StreamLambdaHandler::handleRequest
       Runtime: java8
-      CodeUri: build/libs/micronaut-person-all.jar
+      CodeUri: build/libs/micronaut-person-0.1-all.jar
       MemorySize: 512
       Policies: AWSLambdaBasicExecutionRole
       Timeout: 15

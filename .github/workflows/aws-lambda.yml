@@ -30,4 +30,4 @@ jobs:
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws_region: ${{ secrets.AWS_REGION }}
         function_name: micronaut-person-api
-        zip_file: build/libs/micronaut-person-all.jar
+        zip_file: build/libs/micronaut-person-0.1-all.jar

@@ -80,9 +80,6 @@ tasks.withType(JavaExec) {
 }
 
 shadowJar {
-	archiveBaseName = "micronaut-person"
-	archiveClassifier = 'all'
-	archiveVersion = null    
     mergeServiceFiles()
 }
 
