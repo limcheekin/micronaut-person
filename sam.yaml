@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Micronaut Person API
+Globals:
+  Api:
+    EndpointConfiguration: REGIONAL
+Resources:
+  BursaSignalsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: micronaut-person-api
+      Handler: micronaut.person.StreamLambdaHandler::handleRequest
+      Runtime: java8
+      CodeUri: build/libs/micronaut-person-all.jar
+      MemorySize: 512
+      Policies: AWSLambdaBasicExecutionRole
+      Timeout: 15
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: any
+
+Outputs:
+  BursaSignalsApi:
+    Description: URL for application
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/people'
+    Export:
+      Name: MicronautPersonApi

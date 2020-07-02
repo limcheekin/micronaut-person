@@ -1,0 +1,15 @@
+micronaut:
+  application:
+    name: micronaut-person
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+
+graphql:
+  enabled: true 
+  path: /graphql
+  graphiql:
+    enabled: true
+    path: /graphiql
