@@ -1,17 +1,15 @@
 plugins {
-    id "net.ltgt.apt-eclipse" version "0.21"
-    id "com.github.johnrengelman.shadow" version "5.0.0"
+    id "com.diffplug.eclipse.apt" version "3.22.0"
+    id "com.github.johnrengelman.shadow" version "6.0.0"
     id "application"
 }
-
-
 
 version "0.1"
 group "micronaut.person"
 
 repositories {
     mavenCentral()
-    maven { url "https://jcenter.bintray.com" }
+    jcenter()
 }
 
 configurations {
@@ -28,6 +26,7 @@ dependencies {
     implementation "io.micronaut:micronaut-inject"
     implementation "io.micronaut:micronaut-validation"
     implementation "io.micronaut:micronaut-runtime"
+    implementation "javax.annotation:javax.annotation-api"
     implementation "io.micronaut:micronaut-http-server-netty"
     implementation "io.micronaut:micronaut-http-client"
     implementation "io.swagger.core.v3:swagger-annotations"
@@ -36,12 +35,9 @@ dependencies {
 		exclude group: "com.graphql-java"
 	}
 
-    implementation("io.micronaut.aws:micronaut-function-aws-api-proxy") {
-		exclude group: "org.apache.httpcomponents"
-		exclude group: "org.slf4j"
-	}
+    implementation "io.micronaut.aws:micronaut-function-aws-api-proxy"
 
-    runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
+    runtimeOnly "ch.qos.logback:logback-classic"
     testAnnotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
     testAnnotationProcessor "io.micronaut:micronaut-inject-java"
     testImplementation platform("io.micronaut:micronaut-bom:$micronautVersion")
@@ -59,11 +55,29 @@ test {
     useJUnitPlatform()
 }
 
-tasks.withType(JavaCompile){
+tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
-    options.compilerArgs.add('-parameters')
+    options.compilerArgs.addAll([
+        '-parameters',
+        // enables incremental compilation
+        '-Amicronaut.processing.incremental=true',
+        '-Amicronaut.processing.annotations=micranaut.*',
+        "-Amicronaut.processing.group=$project.group",
+        "-Amicronaut.processing.module=$project.name",
+    ])
 }
 
+tasks.withType(JavaExec) {
+    classpath += configurations.developmentOnly
+    jvmArgs('-XX:TieredStopAtLevel=1', '-Dcom.sun.management.jmxremote')
+    if (gradle.startParameter.continuous) {
+        systemProperties(
+            'micronaut.io.watch.restart':'true',
+            'micronaut.io.watch.enabled':'true',
+            "micronaut.io.watch.paths":"src/main"
+        )
+    }
+}
 
 shadowJar {
 	archiveBaseName = "micronaut-person"
@@ -74,16 +88,3 @@ shadowJar {
 
 run.classpath += configurations.developmentOnly
 run.jvmArgs('-noverify', '-XX:TieredStopAtLevel=1', '-Dcom.sun.management.jmxremote')
-
-task exploded(type: Copy) {
-	from sourceSets.main.output
-	into "build/exploded"
-	
-	
-	into('lib') {
-		from configurations.compileClasspath
-		from configurations.runtimeClasspath
-	}
-}
-
-shadowJar.dependsOn exploded
