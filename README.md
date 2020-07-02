@@ -30,11 +30,11 @@ For the detail of build pipeline, please refer to the [workflow file](.github/wo
 ### Local Development
 Running test with the following command:
 ```
-gradlew test -Dmicronaut.environments=dev
+gradlew test
 ```
 
 Running app with the following command:
 ```
-gradlew run -Dmicronaut.environments=dev
+gradlew run
 ```
 
