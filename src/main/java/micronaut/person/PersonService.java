@@ -7,9 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import javax.inject.Named;
+
 import common.graphql.GraphQLService;
 
 @GraphQLService
+@Named
 public class PersonService {
     List<Person> people = new ArrayList<>();
 
