@@ -8,13 +8,13 @@ Resources:
   BursaSignalsFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: micronaut-person-api
+      FunctionName: micronaut-person-api2
       Handler: micronaut.person.StreamLambdaHandler::handleRequest
       Runtime: java8
       CodeUri: build/libs/micronaut-person-0.1-all.jar
       MemorySize: 512
       Policies: AWSLambdaBasicExecutionRole
-      Timeout: 15
+      Timeout: 30
       Events:
         GetResource:
           Type: Api
