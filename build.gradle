@@ -19,16 +19,18 @@ configurations {
 
 dependencies {
     annotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
+    annotationProcessor "io.micronaut:micronaut-graal"
     annotationProcessor "io.micronaut:micronaut-inject-java"
     annotationProcessor "io.micronaut:micronaut-validation"
-    annotationProcessor "io.micronaut.configuration:micronaut-openapi" 
+    annotationProcessor "io.micronaut.configuration:micronaut-openapi"
+    compileOnly "org.graalvm.nativeimage:svm:19.3.1"
     implementation platform("io.micronaut:micronaut-bom:$micronautVersion")
     implementation "io.micronaut:micronaut-inject"
     implementation "io.micronaut:micronaut-validation"
     implementation "io.micronaut:micronaut-runtime"
     implementation "javax.annotation:javax.annotation-api"
     implementation "io.swagger.core.v3:swagger-annotations"
-    implementation "io.leangen.graphql:spqr:0.10.1"
+    compile 'com.graphql-java-kickstart:graphql-java-tools:6.2.0'
     implementation("io.micronaut.graphql:micronaut-graphql") {
 		exclude group: "com.graphql-java"
 	}
