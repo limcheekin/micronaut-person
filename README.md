@@ -38,3 +38,6 @@ Running app with the following command:
 gradlew run
 ```
 
+### Branches
+__graal-graphql-java__: GraphQL Java implementation deploy to AWS Lambda as custom runtime. 
+
