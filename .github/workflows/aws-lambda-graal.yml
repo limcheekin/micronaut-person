@@ -19,3 +19,11 @@ jobs:
       run: chmod +x deploy.sh
     - name: Run deploy.sh
       run: ./deploy.sh
+    - name: Deploy to AWS Lambda
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+        AWS_DEFAULT_OUTPUT: json
+      run: aws lambda update-function-code --function-name micronaut-person-graal --zip-file fileb://build/function.zip
+else
