@@ -1,20 +1,17 @@
 package micronaut.person;
 
-import io.leangen.graphql.annotations.GraphQLArgument;
-import io.leangen.graphql.annotations.GraphQLQuery;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.inject.Named;
+import javax.inject.Singleton;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import common.graphql.GraphQLService;
-
-@GraphQLService
-@Named
+@Singleton
 public class PersonService {
+    private static final Logger LOG = LoggerFactory.getLogger(PersonService.class);
     List<Person> people = new ArrayList<>();
 
     public Person add(Person person) {
@@ -23,9 +20,9 @@ public class PersonService {
         return person;
     }
 
-    @GraphQLQuery
-    public Optional<Person> findById(@GraphQLArgument(name = "id") Integer id) {
-        return people.stream().filter(it -> it.getId().equals(id)).findFirst();
+    public Optional<Person> findById(Integer id) {
+        LOG.info("people.size() {}", people.size());
+        return people.stream().filter(it -> it.getId() == id).findFirst();
     }
 
     public List<Person> findAll(Integer max, Integer offset) {

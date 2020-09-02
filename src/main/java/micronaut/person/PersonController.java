@@ -10,15 +10,17 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.Nullable;
-import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Controller("/people")
 @Validated
 public class PersonController {
-    @Inject
-    private PersonService personService;
+    private final PersonService personService;
+
+    public PersonController(PersonService personService) {
+        this.personService = personService;
+    }
 
     @Post
     public Person add(@Body @Valid Person person) {

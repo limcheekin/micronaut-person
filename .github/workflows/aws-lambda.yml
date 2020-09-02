@@ -1,12 +1,12 @@
 # Reference: https://github.com/marketplace/actions/aws-lambda-deploy 
 
-name: Deploy AWS Lambda with Gradle
+name: Deploy GraphQL-Java AWS Lambda with Gradle
 
 on:
   push:
-    branches: [ master ]
+    branches: [ graphql-java ]
   pull_request:
-    branches: [ master ]
+    branches: [ graphql-java ]
 
 jobs:
   build:

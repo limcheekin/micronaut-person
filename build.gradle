@@ -30,10 +30,7 @@ dependencies {
     implementation "io.micronaut:micronaut-http-server-netty"
     implementation "io.micronaut:micronaut-http-client"
     implementation "io.swagger.core.v3:swagger-annotations"
-    implementation "io.leangen.graphql:spqr:0.10.1"
-    implementation("io.micronaut.graphql:micronaut-graphql") {
-		exclude group: "com.graphql-java"
-	}
+    implementation "io.micronaut.graphql:micronaut-graphql"
 
     implementation "io.micronaut.aws:micronaut-function-aws-api-proxy"
 
