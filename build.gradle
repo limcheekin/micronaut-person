@@ -34,7 +34,7 @@ dependencies {
 
     implementation "io.micronaut.aws:micronaut-function-aws-api-proxy"
 
-    runtimeOnly "ch.qos.logback:logback-classic"
+    runtimeOnly "ch.qos.logback:logback-classic:1.3.0-alpha5"
     testAnnotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
     testAnnotationProcessor "io.micronaut:micronaut-inject-java"
     testImplementation platform("io.micronaut:micronaut-bom:$micronautVersion")
