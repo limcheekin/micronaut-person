@@ -4,7 +4,6 @@ import io.micronaut.configuration.graphql.GraphQLController;
 import io.micronaut.configuration.graphql.GraphQLExecutionResultHandler;
 import io.micronaut.configuration.graphql.GraphQLInvocation;
 import io.micronaut.configuration.graphql.GraphQLJsonSerializer;
-import io.micronaut.configuration.graphql.GraphQLRequestBody;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Body;
@@ -43,7 +42,7 @@ public class CustomGraphQLController extends GraphQLController {
             @Nullable @QueryValue String query, 
             @Nullable @QueryValue String operationName,
             @Nullable @QueryValue String variables, 
-            @Nullable @Body GraphQLRequestBody graphQLRequestBody,
+            @Nullable @Body CustomGraphQLRequestBody graphQLRequestBody,
             HttpRequest httpRequest) {
         LOG.info("Handling graphQL Request : {}", graphQLRequestBody);
         return super.post(query, operationName, variables, 
