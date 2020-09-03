@@ -37,15 +37,14 @@ public class CustomGraphQLController extends GraphQLController {
 
     @Post(value = "graphql", 
           produces = MediaType.APPLICATION_JSON, 
-          consumes = MediaType.APPLICATION_JSON)
+          consumes = MediaType.APPLICATION_GRAPHQL)
     public Publisher<String> post(
             @Nullable @QueryValue String query, 
             @Nullable @QueryValue String operationName,
             @Nullable @QueryValue String variables, 
-            @Nullable @Body CustomGraphQLRequestBody graphQLRequestBody,
+            @Nullable @Body String body,
             HttpRequest httpRequest) {
-        LOG.info("Handling graphQL Request : {}", graphQLRequestBody);
-        return super.post(query, operationName, variables, 
-        graphQLJsonSerializer.serialize(graphQLRequestBody), httpRequest);
+        LOG.info("Handling graphQL Request : {}", body);
+        return super.post(query, operationName, variables, body, httpRequest);
     }
 }
