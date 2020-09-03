@@ -5,5 +5,6 @@ import io.micronaut.core.annotation.Introspected;
 
 @Introspected
 public class CustomGraphQLRequestBody extends GraphQLRequestBody {
+    public CustomGraphQLRequestBody() {}
 
 }
