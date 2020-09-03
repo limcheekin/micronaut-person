@@ -32,7 +32,7 @@ dependencies {
     implementation "io.swagger.core.v3:swagger-annotations"
     implementation "io.micronaut.graphql:micronaut-graphql"
 
-    implementation "io.micronaut.aws:micronaut-function-aws-custom-runtime") {
+    implementation("io.micronaut.aws:micronaut-function-aws-custom-runtime") {
         exclude group: "com.fasterxml.jackson.module", module: "jackson-module-afterburner"
     }
 
