@@ -28,12 +28,7 @@ public class PersonController {
     }
 
     @Get("/{id:4}")
-    public Optional<Person> findById(@NotNull Integer id) {
+    public Optional<Person> findById(@NotNull Long id) {
         return personService.findById(id);
-    }
-
-    @Get("{?max,offset}")
-    public List<Person> findAll(@Nullable Integer max, @Nullable Integer offset) {
-        return personService.findAll(max, offset);
     }
 }
