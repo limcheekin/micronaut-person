@@ -11,7 +11,7 @@ datasources:
     default:
         url: $db_url
         username: $db_user
-        password: $db_password
+        password: '$db_password'
         driverClassName: $db_driver
 
 jpa:
