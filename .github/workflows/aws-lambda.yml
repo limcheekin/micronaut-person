@@ -4,9 +4,9 @@ name: Deploy GraphQL-Java AWS Lambda with Gradle
 
 on:
   push:
-    branches: [ graphql-java ]
+    branches: [ data-jpa ]
   pull_request:
-    branches: [ graphql-java ]
+    branches: [ data-jpa ]
 
 jobs:
   build:
