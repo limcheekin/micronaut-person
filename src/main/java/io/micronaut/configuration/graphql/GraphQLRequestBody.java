@@ -18,12 +18,15 @@ package io.micronaut.configuration.graphql;
 
 import java.util.Map;
 
+import io.micronaut.core.annotation.Introspected;
+
 /**
  * Represents the request body input data to execute a GraphQL query.
  *
  * @author Marcel Overdijk
  * @since 1.0
  */
+@Introspected
 public class GraphQLRequestBody {
 
     private String query;
