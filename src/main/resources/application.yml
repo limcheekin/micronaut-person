@@ -9,10 +9,10 @@ micronaut:
 
 datasources:
     default:
-        url: ${db.url:`jdbc:mysql://localhost:3306/test`}
-        username: ${db.user:root}
-        password: ${db.password:!qaz@wsx}
-        driverClassName: ${db.driver:org.mariadb.jdbc.Driver}
+        url: ${db_url:`jdbc:mysql://localhost:3306/test`}
+        username: ${db_user:root}
+        password: ${db_password:!qaz@wsx}
+        driverClassName: ${db_driver:org.mariadb.jdbc.Driver}
 
 jpa:
   default:
