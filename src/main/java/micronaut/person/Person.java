@@ -1,16 +1,22 @@
 package micronaut.person;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
 import io.micronaut.core.annotation.Introspected;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 @Introspected
+@Entity
 public class Person {
-    @Max(10000)
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     @NotBlank
     private String firstName;
     @NotBlank
@@ -20,11 +26,11 @@ public class Person {
     @NotNull
     private Gender gender;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

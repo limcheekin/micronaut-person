@@ -7,6 +7,23 @@ micronaut:
         paths: classpath:META-INF/swagger
         mapping: /swagger/**
 
+datasources:
+    default:
+        url: ${db_url:`jdbc:mysql://localhost:3306/test`}
+        username: ${db_user:root}
+        password: ${db_password:!qaz@wsx}
+        driverClassName: ${db_driver:org.mariadb.jdbc.Driver}
+
+jpa:
+  default:
+    properties:
+      hibernate:
+        bytecode:
+          provider: none
+        hbm2ddl:
+          auto: none
+        show_sql: false
+        
 graphql:
   enabled: true 
   path: /graphql

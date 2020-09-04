@@ -7,13 +7,13 @@ type Person {
   age: Int!
   firstName: String!
   gender: Gender!
-  id: Int
+  id: Long
   lastName: String!
 }
 
 """Query root"""
 type Query {
-  findById(id: Int): Person
+  findById(id: Long): Person
 }
 
 

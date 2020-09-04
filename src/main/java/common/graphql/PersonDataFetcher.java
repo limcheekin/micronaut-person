@@ -23,7 +23,7 @@ public class PersonDataFetcher implements DataFetcher<Optional<Person>> {
     }
 
     public Optional<Person> get(DataFetchingEnvironment env) {
-        Integer id = env.getArgument("id");
+        Long id = env.getArgument("id");
         LOG.info("get(id = {})", id);
         return personService.findById(id);
     }

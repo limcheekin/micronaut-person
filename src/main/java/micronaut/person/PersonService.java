@@ -12,21 +12,18 @@ import org.slf4j.LoggerFactory;
 @Singleton
 public class PersonService {
     private static final Logger LOG = LoggerFactory.getLogger(PersonService.class);
-    List<Person> people = new ArrayList<>();
+    private final PersonRepository repository;
+
+    public PersonService(PersonRepository repository) {
+        this.repository = repository;
+    }
 
     public Person add(Person person) {
-        person.setId(people.size() + 1);
-        people.add(person);
-        return person;
+        return repository.save(person);
     }
 
-    public Optional<Person> findById(Integer id) {
-        LOG.info("people.size() {}", people.size());
-        return people.stream().filter(it -> it.getId() == id).findFirst();
-    }
-
-    public List<Person> findAll(Integer max, Integer offset) {
-        return people.stream().skip(offset == null ? 0 : offset).limit(max == null ? 10000 : max)
-                .collect(Collectors.toList());
+    public Optional<Person> findById(Long id) {
+        LOG.info("id {}", id);
+        return repository.findById(id);
     }
 }
