@@ -7,6 +7,9 @@ micronaut:
         paths: classpath:META-INF/swagger
         mapping: /swagger/**
 
+jackson:
+  bean-introspection-module: true        
+
 datasources:
     default:
         url: $db_url
