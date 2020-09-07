@@ -132,6 +132,11 @@ public class DatasourceConfiguration extends PoolProperties implements BasicJdbc
         return super.getUsername();
     }
 
+    public String getUser() {
+        LOG.info("getUser() calculatedSettings.getUsername() {}", calculatedSettings.getUsername());
+        return calculatedSettings.getUsername();
+    }
+
     /**
      * @return The calculated password
      */
