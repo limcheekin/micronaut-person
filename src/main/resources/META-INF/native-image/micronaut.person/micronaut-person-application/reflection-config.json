@@ -6,9 +6,5 @@
   {
     "name": "org.mariadb.jdbc.util.Options",
     "allDeclaredFields": true
-  },
-  {
-    "name": "io.micronaut.configuration.jdbc.tomcat.DatasourceConfiguration",
-    "allDeclaredFields": true
   }
 ]
