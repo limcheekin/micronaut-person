@@ -15,11 +15,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Replace DB Configurations
-      uses: datamonsters/replace-action@v2
-      with:
-        files: 'src/main/resources/application.yml'
-        replacements: '$db_url=${{ secrets.DB_URL }},$db_user=${{ secrets.DB_USER }},$db_password=${{ secrets.DB_PASSWORD }},$db_driver=${{ secrets.DB_DRIVER }}'
     - name: Grant execute permission for deploy.sh
       run: chmod +x deploy.sh
     - name: Run deploy.sh
