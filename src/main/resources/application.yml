@@ -7,6 +7,9 @@ micronaut:
         paths: classpath:META-INF/swagger
         mapping: /swagger/**
 
+jackson:
+  bean-introspection-module: true        
+
 graphql:
   enabled: true 
   path: /graphql
