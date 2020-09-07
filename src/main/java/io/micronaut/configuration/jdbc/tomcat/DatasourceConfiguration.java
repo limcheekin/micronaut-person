@@ -28,6 +28,9 @@ import javax.annotation.PostConstruct;
 import java.util.Properties;
 import io.micronaut.core.annotation.Introspected;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Allows the configuration of Tomcat JDBC data sources. All properties on
  * {@link PoolProperties} are available to be configured.
@@ -43,7 +46,7 @@ import io.micronaut.core.annotation.Introspected;
 @EachProperty(value = BasicJdbcConfiguration.PREFIX, primary = "default")
 @Introspected
 public class DatasourceConfiguration extends PoolProperties implements BasicJdbcConfiguration {
-
+    private static final Logger LOG = LoggerFactory.getLogger(DatasourceConfiguration.class);
     private CalculatedSettings calculatedSettings;
 
     /**
@@ -54,6 +57,7 @@ public class DatasourceConfiguration extends PoolProperties implements BasicJdbc
         super();
         this.setName(name);
         this.calculatedSettings = new CalculatedSettings(this);
+        LOG.info("name {}, calculatedSettings {}", name, calculatedSettings);
     }
 
     /**
@@ -70,6 +74,7 @@ public class DatasourceConfiguration extends PoolProperties implements BasicJdbc
 
     @Override
     public void setDbProperties(@MapFormat(keyFormat = StringConvention.UNDER_SCORE_SEPARATED) Properties dbProperties) {
+        LOG.info("dbProperties {}", dbProperties);
         super.setDbProperties(dbProperties);
     }
 
@@ -78,6 +83,7 @@ public class DatasourceConfiguration extends PoolProperties implements BasicJdbc
      */
     @Override
     public String getDriverClassName() {
+        LOG.info("calculatedSettings.getDriverClassName() {}", calculatedSettings.getDriverClassName());
         return calculatedSettings.getDriverClassName();
     }
 
@@ -86,6 +92,7 @@ public class DatasourceConfiguration extends PoolProperties implements BasicJdbc
      */
     @Override
     public String getConfiguredDriverClassName() {
+        LOG.info("super.getDriverClassName() {}", super.getDriverClassName());
         return super.getDriverClassName();
     }
 
@@ -94,6 +101,7 @@ public class DatasourceConfiguration extends PoolProperties implements BasicJdbc
      */
     @Override
     public String getUrl() {
+        LOG.info("calculatedSettings.getUrl() {}", calculatedSettings.getUrl());
         return calculatedSettings.getUrl();
     }
 
@@ -102,6 +110,7 @@ public class DatasourceConfiguration extends PoolProperties implements BasicJdbc
      */
     @Override
     public String getConfiguredUrl() {
+        LOG.info("super.getUrl() {}", super.getUrl());
         return super.getUrl();
     }
 
@@ -110,6 +119,7 @@ public class DatasourceConfiguration extends PoolProperties implements BasicJdbc
      */
     @Override
     public String getUsername() {
+        LOG.info("calculatedSettings.getUsername() {}", calculatedSettings.getUsername());
         return calculatedSettings.getUsername();
     }
 
@@ -118,6 +128,7 @@ public class DatasourceConfiguration extends PoolProperties implements BasicJdbc
      */
     @Override
     public String getConfiguredUsername() {
+        LOG.info("super.getUsername() {}", super.getUsername());
         return super.getUsername();
     }
 
