@@ -24,7 +24,7 @@ public class Person {
     @PositiveOrZero
     private int age;
     @NotNull
-    private Gender gender;
+    private String gender;
 
     public Long getId() {
         return id;
@@ -58,11 +58,11 @@ public class Person {
         this.age = age;
     }
 
-    public Gender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 }
