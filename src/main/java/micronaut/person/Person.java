@@ -65,9 +65,4 @@ public class Person {
     public void setGender(Gender gender) {
         this.gender = gender;
     }
-
-    @Introspected
-    public enum Gender {
-        MALE, FEMALE;
-    }
 }
