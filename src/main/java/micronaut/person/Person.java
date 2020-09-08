@@ -66,6 +66,7 @@ public class Person {
         this.gender = gender;
     }
 
+    @Introspected
     public enum Gender {
         MALE, FEMALE;
     }
