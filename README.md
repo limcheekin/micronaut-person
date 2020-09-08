@@ -39,5 +39,13 @@ gradlew run
 ```
 
 ### Branches
-__graal-graphql-java__: GraphQL Java implementation deploy to AWS Lambda as custom runtime. 
+#### graal-graphql-java
+GraphQL Java implementation deploy to AWS Lambda as custom runtime.
+
+#### graal-data-jpa
+GraphQL Java implementation with JPA backend deploy to AWS Lambda as custom runtime.
+
+Pending issues:
+ - added micronaut-graphql source code to the project to add `@Introspected` to `GraphQLRequestBody` and `GraphQLResponseBody` class
+ - `Gender` enum class not working in `Person` entity class (java.lang.ClassNotFoundException: micronaut.person.Gender)
 
