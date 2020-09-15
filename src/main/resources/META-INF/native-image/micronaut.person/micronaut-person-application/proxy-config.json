@@ -1,5 +1,0 @@
-[
-  ["java.sql.Connection"],
-  ["java.sql.Statement"],
-  ["java.sql.ResultSet"]
-]

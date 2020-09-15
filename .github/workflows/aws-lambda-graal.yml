@@ -4,9 +4,9 @@ name: Deploy AWS Lambda Custom Runtime with Docker Build
 
 on:
   push:
-    branches: [ graal-data-jpa ]
+    branches: [ graal-data-jpa-2.0.x ]
   pull_request:
-    branches: [ graal-data-jpa ]
+    branches: [ graal-data-jpa-2.0.x ]
 
 jobs:
   build:

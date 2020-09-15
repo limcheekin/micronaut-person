@@ -1,3 +1,3 @@
 #!/bin/sh
 set -euo pipefail
-./server -Xmx128m -Djava.library.path=$(pwd)
+./micronaut-person -Xmx512m
