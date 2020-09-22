@@ -1,3 +1,5 @@
+scalar Long
+
 enum Gender {
   FEMALE
   MALE

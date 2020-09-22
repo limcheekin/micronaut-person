@@ -1,6 +1,7 @@
 package common.graphql;
 
 import graphql.GraphQL;
+import graphql.Scalars;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.RuntimeWiring;
 import graphql.schema.idl.SchemaGenerator;
@@ -35,6 +36,7 @@ public class GraphQLFactory {
         RuntimeWiring runtimeWiring = RuntimeWiring.newRuntimeWiring()
                 .type("Query", typeWiring -> typeWiring
                         .dataFetcher("findById", personDataFetcher))
+                .scalar(Scalars.GraphQLLong)        
                 .build();
 
         // Create the executable schema.
