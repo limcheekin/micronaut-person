@@ -6,10 +6,14 @@ import javax.validation.constraints.PositiveOrZero;
 
 import io.micronaut.core.annotation.Introspected;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 
 @Introspected
 @Entity
@@ -25,6 +29,8 @@ public class Person {
     private int age;
     @NotNull
     private Gender gender;
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
+    private List<Contact> contacts;
 
     public Long getId() {
         return id;
@@ -64,6 +70,20 @@ public class Person {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+
+    public List<Contact> getContacts() {
+        return this.contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
+    public void addToContacts(Contact contact) {
+        contact.setPerson(this);
+        this.contacts.add(contact);
     }
 
     public enum Gender {
