@@ -72,8 +72,7 @@ public class PersonControllerTest {
         request = postRequest("/graphql", "{\"query\":\"{ findById(id: 1) { lastName firstName gender } }\" }");
         response = handler.handleRequest(request, lambdaContext);
         Assertions.assertEquals(HttpStatus.OK.getCode(), response.getStatusCode());
-        String jsonResponse = objectMapper.readValue(response.getBody(), String.class);
-        assertEquals("{\"data\":{\"findById\":{\"lastName\":\"Smith\",\"firstName\":\"John\",\"gender\":\"MALE\"}}}", jsonResponse);
+        assertEquals("{\"data\":{\"findById\":{\"lastName\":\"Smith\",\"firstName\":\"John\",\"gender\":\"MALE\"}}}", response.getBody());
     }
 
     @Test
