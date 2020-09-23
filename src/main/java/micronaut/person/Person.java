@@ -4,10 +4,11 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
-import io.micronaut.core.annotation.Introspected;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
-@Introspected
 @Entity
 public class Person {
     @Id
@@ -29,7 +29,8 @@ public class Person {
     private int age;
     @NotNull
     private Gender gender;
-    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
+    @JsonManagedReference
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Contact> contacts;
 
     public Long getId() {
@@ -78,6 +79,9 @@ public class Person {
     }
 
     public void setContacts(List<Contact> contacts) {
+        if (!contacts.isEmpty()) {
+            contacts.forEach( c -> c.setPerson(this) );
+        }
         this.contacts = contacts;
     }
 
