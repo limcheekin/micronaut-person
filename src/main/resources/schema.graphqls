@@ -5,12 +5,26 @@ enum Gender {
   MALE
 }
 
+enum ContactType {
+  WORK_NUMBER
+  HOME_NUMBER
+  MOBILE_NUMBER
+  EMAIL_ADDRESS
+}
+
+type Contact {
+  id: Long
+  type: ContactType!
+  value: String!
+}
+
 type Person {
   age: Int!
   firstName: String!
   gender: Gender!
   id: Long
   lastName: String!
+  contacts: [Contact]
 }
 
 """Query root"""
