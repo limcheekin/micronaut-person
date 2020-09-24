@@ -92,8 +92,4 @@ public class Person {
         contact.setPerson(this);
         this.contacts.add(contact);
     }
-
-    public enum Gender {
-        MALE, FEMALE;
-    }
 }
