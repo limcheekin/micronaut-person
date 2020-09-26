@@ -27,9 +27,15 @@ type Person {
   contacts: [Contact]
 }
 
+type PersonPage {
+  people: [Person]
+  total: Long!
+}
+
 """Query root"""
 type Query {
   findById(id: Long): Person
+  listOrderByLastName(size: Int!, page: Int!): PersonPage
 }
 
 
