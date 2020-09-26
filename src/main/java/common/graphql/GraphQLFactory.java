@@ -35,7 +35,8 @@ public class GraphQLFactory {
         // Create the runtime wiring.
         RuntimeWiring runtimeWiring = RuntimeWiring.newRuntimeWiring()
                 .type("Query", typeWiring -> typeWiring
-                        .dataFetcher("findById", personDataFetcher))
+                        .dataFetcher("findById", personDataFetcher.findById())
+                        .dataFetcher("listOrderByLastName", personDataFetcher.listOrderByLastName()))
                 .scalar(Scalars.GraphQLLong)        
                 .build();
 
