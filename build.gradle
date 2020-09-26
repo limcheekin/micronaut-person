@@ -10,22 +10,11 @@ group "micronaut.person"
 repositories {
     mavenCentral()
     jcenter()
-    maven {
-        url 'https://dl.bintray.com/micronaut/core-releases-local'
-    }
 }
 
 configurations {
     // for dependencies that are needed for development only
     developmentOnly
-
-    all {
-        resolutionStrategy {
-            force 'io.micronaut.aws:micronaut-aws-common:2.0.3'
-            force 'io.micronaut.aws:micronaut-function-aws:2.0.3'
-            force 'io.micronaut.aws:micronaut-function-aws-api-proxy:2.0.3'
-        }
-    }
 }
 
 
