@@ -25,8 +25,8 @@ jobs:
       run: chmod +x gradlew
     - name: Run gradlew docker build
       run: ./gradlew buildNativeLambda -Pmicronaut.runtime=lambda
-    - name: Extract function.zip from docker image
-      run: docker run --rm --entrypoint cat micronaut-person /function/function.zip > build/function.zip
+    - name: Rename to function.zip
+      run: mv build/libs/micronaut-person-0.1-lambda.zip build/function.zip
     - name: Deploy to AWS Lambda
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
