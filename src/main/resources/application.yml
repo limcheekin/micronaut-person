@@ -2,15 +2,13 @@ micronaut:
   application:
     name: micronaut-person
 
-jackson:
-  bean-introspection-module: true   
-
 datasources:
     default:
         url: ${db_url:`jdbc:mysql://localhost:3306/test`}
         username: ${db_user:root}
         password: ${db_password:`!qaz@wsx`}
-        driverClassName: ${db_driver:org.mariadb.jdbc.Driver}
+        driverClassName: ${db_driver:com.mysql.cj.jdbc.Driver}
+        dialect: MYSQL
 
 jpa:
   default:

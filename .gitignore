@@ -11,6 +11,4 @@ out/
 .project
 .settings
 .classpath
-bin/
-.vscode/
-output-sam.yaml
+.factorypath

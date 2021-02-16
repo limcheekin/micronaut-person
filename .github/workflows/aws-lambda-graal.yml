@@ -4,9 +4,9 @@ name: Deploy AWS Lambda Custom Runtime with Docker Build
 
 on:
   push:
-    branches: [ graal-data-jpa-2.0.x ]
+    branches: [ micronaut-2.3.2-java11 ]
   pull_request:
-    branches: [ graal-data-jpa-2.0.x ]
+    branches: [ micronaut-2.3.2-java11 ]
 
 jobs:
   build:
@@ -15,10 +15,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Grant execute permission for deploy.sh
-      run: chmod +x deploy.sh
-    - name: Run deploy.sh
-      run: ./deploy.sh
+    - name: Setup Java JDK
+      uses: actions/setup-java@v1.4.3
+      with:
+        java-version: '11.0.10' # The JDK version to make available on the path.
+        java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
+        architecture: x64 # (x64 or x86) - defaults to x64
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    - name: Run gradlew dockerBuildNative
+      run: ./gradlew dockerBuildNative
+    - name: Extract function.zip from docker image
+      run: docker run --rm --entrypoint cat micronaut-person /function/function.zip > build/function.zip
     - name: Deploy to AWS Lambda
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

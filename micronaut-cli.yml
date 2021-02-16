@@ -3,4 +3,4 @@ defaultPackage: micronaut.person
 testFramework: junit
 sourceLanguage: java
 buildTool: gradle
-features: [annotation-api, app-name, aws-lambda, docker, file-watch, gradle, graphql, java, java-application, junit, logback, readme, shade, yaml]
+features: [annotation-api, app-name, aws-lambda, aws-lambda-custom-runtime, data, data-jpa, graalvm, gradle, graphql, java, jdbc-hikari, junit, logback, mysql, readme, shade, testcontainers, yaml]
