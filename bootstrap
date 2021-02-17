@@ -1,3 +1,3 @@
 #!/bin/sh
 set -euo pipefail
-./micronaut-person -Xmx512m
+./application
